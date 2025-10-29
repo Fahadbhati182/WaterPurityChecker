@@ -7,20 +7,20 @@ import axios from "axios";
 import Loading from "./components/Loading";
 
 axios.defaults.baseURL =
-  import.meta.env.VITE_API_BASE_URL || "http://localhost:5000";
-axios.defaults.withCredentials = true;
+  import.meta.env.VITE_API_BASE_URL ||"http://localhost:8080";
+
 
 const App = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [loading, setLoading] = useState(false);
   const [aiResult, setAiResult] = useState(null);
   const [formData, setFormData] = useState({
-    ph: 3.5,
-    tds: 1200,
-    turbidity: 15,
-    temperature: 35,
-    color: "Brown",
-    smell: "Chemical",
+    ph: 7.0,
+    tds: 90,
+    turbidity: 20,
+    temperature: 27,
+    color: "colorless",
+    smell: "none",
     image: null,
   });
 
@@ -57,7 +57,7 @@ const App = () => {
       const res = await axios.post("/api/water-purity/check-purity", {
         ...formData,
       });
-      console.log(res)
+      console.log(res);
 
       if (res.data.success) {
         const normalizedResult = normalizeAiResult(res.data.aiResult.aiResult);

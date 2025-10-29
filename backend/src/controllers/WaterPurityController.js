@@ -53,8 +53,6 @@ export const generateAiSuggestions = async (req, res) => {
         6. Under NO circumstances should a purity < 50 return "Safe".
 `;
 
-
-
     const aires = await fetch(
       "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent",
       {
@@ -78,7 +76,7 @@ export const generateAiSuggestions = async (req, res) => {
     );
 
     const aiResponse = await aires.json();
-
+    console.log(aiResponse);
     const textResponse = aiResponse.candidates[0].content.parts[0].text;
 
     let aiResult;
