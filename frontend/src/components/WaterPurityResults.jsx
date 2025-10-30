@@ -31,7 +31,7 @@ const WaterPurityCard = ({ report }) => {
             <span className="material-symbols-outlined text-base">
               verified
             </span>
-            {status.charAt(0).toUpperCase() + status.slice(1)}
+            {status?.charAt(0).toUpperCase() + status?.slice(1)}
           </span>
         </div>
         {/* Purity Circle */}
